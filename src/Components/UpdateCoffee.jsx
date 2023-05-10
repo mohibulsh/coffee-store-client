@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
+import Swal from 'sweetalert2'
 import Form from 'react-bootstrap/Form';
 const UpdateCoffee = () => {
     const handlerUpdate = event =>{
@@ -25,7 +25,15 @@ const UpdateCoffee = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            if(data.acknowledged ==true){
+                Swal.fire({
+                    title: 'success!',
+                    text: 'successfully add the coffee',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+                form.reset()
+            }
         })
     }
     return (
