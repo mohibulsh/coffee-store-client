@@ -4,7 +4,7 @@ import { HiEye, HiPencil, HiOutlineTrash } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const CoffeeCard = ({ coffee }) => {
+const CoffeeCard = ({ coffee,coffees,setCoffees }) => {
   const { _id, photo, name, details, category, supplier, chef } = coffee;
   const handelerDelete = (id) => {
     Swal.fire({
@@ -29,6 +29,10 @@ const CoffeeCard = ({ coffee }) => {
                 'Your file has been deleted.',
                 'success'
               )
+            }
+            {
+             const remainigCoffee = coffees.filter(cof=>cof._id!==id)
+             setCoffees(remainigCoffee)
             }
           })
       }
